@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import "@radix-ui/themes/styles.css";
 import "./globals.css";
-
+import { Flex, Theme } from "@radix-ui/themes";
+import Footer from "@/components/Footer";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -25,7 +27,17 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        {children}
+        <Theme
+          accentColor="purple"
+          panelBackground="solid"
+          radius="large"
+          appearance="dark"
+        >
+          <Flex height="100vh" direction="column" justify="between">
+            {children}
+            <Footer />
+          </Flex>
+        </Theme>
       </body>
     </html>
   );
